@@ -44,13 +44,28 @@
                 const newButton = button.cloneNode(true);
                 button.parentNode?.replaceChild(newButton, button);
                 
-                // Primeiro botão - scroll para seção de bônus/valor
-                if (index === 0) {
+                // Identifica o botão "QUERO ADQUIRIR AGORA!" pelo texto
+                if (text.toLowerCase().includes('quero adquirir') || text.toLowerCase().includes('adquirir agora')) {
                     newButton.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        console.log('Primeiro botão clicado - buscando seção de bônus/preço');
+                        console.log('Botão "QUERO ADQUIRIR AGORA!" clicado - redirecionando para Kiwify');
+                        
+                        // Abre em nova aba
+                        window.open('https://pay.kiwify.com.br/bdLzvkH', '_blank');
+                    });
+                    
+                    console.log('Botão "QUERO ADQUIRIR AGORA!" configurado para Kiwify');
+                }
+                
+                // Identifica o botão "Baixar Preview" pelo texto - mantém comportamento original
+                if (text.toLowerCase().includes('baixar') && text.toLowerCase().includes('preview')) {
+                    newButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        console.log('Botão "Baixar Preview" clicado - fazendo scroll para seção de bônus/preço');
                         
                         // Lista de seletores para encontrar seção de preço/bônus
                         const selectors = [
@@ -98,22 +113,7 @@
                         }
                     });
                     
-                    console.log('Primeiro botão configurado para scroll');
-                }
-                
-                // Segundo botão - redireciona para Kiwify
-                if (index === 1) {
-                    newButton.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        console.log('Segundo botão clicado - redirecionando para Kiwify');
-                        
-                        // Abre em nova aba
-                        window.open('https://pay.kiwify.com.br/bdLzvkH', '_blank');
-                    });
-                    
-                    console.log('Segundo botão configurado para Kiwify');
+                    console.log('Botão "Baixar Preview" configurado para scroll');
                 }
             });
             

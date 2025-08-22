@@ -7,17 +7,18 @@
 
 ## Como funciona:
 
-### Primeiro Botão:
+### Botão "Baixar Preview":
 - **Ação**: Faz scroll suave para a seção de bônus/preço
 - **Busca por**: Elementos com IDs ou classes contendo "bonus", "preco", "price", "valor"
 - **Fallback**: Se não encontrar seção específica, vai para 60% da página
 
-### Segundo Botão:
+### Botão "QUERO ADQUIRIR AGORA!":
 - **Ação**: Redireciona para `https://pay.kiwify.com.br/bdLzvkH`
 - **Método**: Abre em nova aba para não perder a página atual
 
 ## Funcionalidades técnicas:
 
+- ✅ **Detecção por texto**: Identifica os botões pelo texto específico, não pela posição
 - ✅ **Detecção automática**: Encontra botões automaticamente, independente de como foram criados no React
 - ✅ **Múltiplas tentativas**: Tenta encontrar os botões várias vezes até o React renderizar completamente
 - ✅ **Observador de DOM**: Detecta quando novos elementos são adicionados à página
@@ -29,16 +30,17 @@
 1. Abra a página no navegador
 2. Abra o console do navegador (F12)
 3. Clique nos botões para ver os logs e testar o funcionamento
-4. O primeiro botão deve fazer scroll para a seção de bônus/preço
-5. O segundo botão deve abrir a página do Kiwify em nova aba
+4. O botão "Baixar Preview" deve fazer scroll para a seção de bônus/preço
+5. O botão "QUERO ADQUIRIR AGORA!" deve abrir a página do Kiwify em nova aba
 
 ## Arquivos modificados:
 
 - `index.html` - Adicionada linha para incluir o script
-- `modify-buttons.js` - Novo arquivo com a lógica dos botões
+- `modify-buttons.js` - Arquivo com a lógica dos botões (atualizado para identificar por texto)
 
 ## Observações:
 
-- O script funciona independentemente de como a página React está estruturada
+- O script identifica os botões pelo texto específico ("Baixar Preview" e "QUERO ADQUIRIR AGORA!")
+- Funciona independentemente de como a página React está estruturada
 - Se a estrutura da página mudar, o script tentará se adaptar automaticamente
 - É compatível com GitHub Pages e outros serviços de hospedagem
